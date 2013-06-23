@@ -13,8 +13,8 @@ var version = new Date().getMilliseconds(),
         }
     },
 
-    requestSaveAsBookmark = function (tabId) {
-        chrome.tabs.sendMessage(tabId, {action: "getSongName"}, function (response) {
+    parseSong = function (tabId) {
+        chrome.tabs.sendMessage(tabId, {action: "songName"}, function (response) {
             addBookmark(response.songName.trim());
         });
     },
@@ -22,7 +22,7 @@ var version = new Date().getMilliseconds(),
     findPage = function (tabs) {
         $(tabs).each(function (index) {
             if (tabs[index].url.indexOf('radiotuna') !== -1) {
-                requestSaveAsBookmark(tabs[0].id);
+                parseSong(tabs[index].id);
             }
         });
     }
@@ -34,7 +34,8 @@ chrome.bookmarks.getChildren("2", function (bookmarks) {
             folderId = bookmarks[index].id
             notExists = false;
         }
-    })
+    });
+
     if (notExists) {
         chrome.bookmarks.create({'parentId': null,
                 'title': '2Find'},
@@ -51,4 +52,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             findPage(tabs);
         })
     }
+});
+
+chrome.browserAction.onClicked.addListener(function () {
+    chrome.runtime.sendMessage({msg: "run"})
 });

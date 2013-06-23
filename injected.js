@@ -4,15 +4,11 @@ $(document).ready(function() {
 		var artistName = $('#nppArtistName').text()
 		
 		return artistName + " " + trackName
-	}
-	
-	key('alt+a', function(){
-		chrome.runtime.sendMessage({msg: "run"})
-	});
+	};
 	
 	chrome.runtime.onMessage.addListener(
 		function(request, sender, sendResponse) {
-			if (request.action == "getSongName")
+			if (request.action == "songName")
 				sendResponse({songName: parseSongName()});
 	});
 	

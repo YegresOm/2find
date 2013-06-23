@@ -8,7 +8,7 @@
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
-	  "js": ["jquery-1.10.1.min.js", "keymaster.min.js" ,"injected.js"]
+	  "js": ["jquery-1.10.1.min.js","injected.js"]
     }
   ],
   
@@ -22,5 +22,9 @@
      "http://*/*",
 	 "tabs",
      "bookmarks"
-  ]
+  ],
+
+    "browser_action": {
+        "default_icon": "icon.ico"
+    }
 }
