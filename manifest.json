@@ -1,20 +1,20 @@
 {
   "manifest_version": 2,
 
-  "name": "Find and save",
-  "description": "This extension find, save and show current song on radiotuna",
-  "version": "1.0",
+  "name": "Find to save later",
+  "description": "This extension can find the current song on radiotuna web page, and save it as bookmark with a google search url.",
+  "version": "0.1",
   
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
-	  "js": ["jquery-1.10.1.min.js","injected.js"]
+	  "js": ["lib/jquery-1.10.1.min.js","injected.js"]
     }
   ],
   
   "background": {
     "persistent": true,
-    "scripts": ["jquery-1.10.1.min.js", "background.js"]
+    "scripts": ["lib/jquery-1.10.1.min.js", "background.js"]
   },
   
   "permissions": [
