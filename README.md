@@ -1,2 +1,2 @@
 # 2find
-It was google chrome plugin wich bookmarks with song currently plaing on on internet radio.
+It was google chrome plugin which creates bookmark with song name currently playing on internet radio.
